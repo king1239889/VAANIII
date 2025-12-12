@@ -1,0 +1,8 @@
+{
+  "name": "VAANIII ",
+  "description": "A sophisticated voice-controlled AI assistant with integrated mapping, intelligent conversation, and real-time interaction capabilities.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}

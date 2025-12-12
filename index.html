@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#020408">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>VAANIII // HYPER-OS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- PrismJS for Code Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
+
+    <!-- Chart.js for Data Visualization Protocol -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+              display: ['Orbitron', 'sans-serif'],
+              retro: ['VT323', 'monospace'],
+            },
+            colors: {
+              van: {
+                950: '#020408',
+                900: '#050a10', 
+                800: '#0f172a',
+                700: '#1e293b',
+                600: '#334155',
+                500: '#06b6d4',
+                400: '#22d3ee',
+                // Using CSS variables for dynamic theming
+                accent: 'var(--van-accent)', 
+                alert: 'var(--van-alert)', 
+                success: 'var(--van-success)', 
+                warn: 'var(--van-warn)', 
+                purple: 'var(--van-purple)',
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'spin-slower': 'spin 20s linear infinite',
+              'spin-reverse': 'spin-reverse 15s linear infinite',
+              'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+              'glitch': 'glitch 1s linear infinite',
+              'scan': 'scan 4s linear infinite',
+              'grid-flow': 'grid-move 20s linear infinite',
+              'typing': 'typing 1.5s steps(20, end) infinite',
+              'slide-up': 'slideUp 0.5s ease-out forwards',
+              'scale-in': 'scaleIn 0.3s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'hologram': 'hologramFlicker 2s infinite',
+              'ai-fade': 'aiMaterialize 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+              'border-pulse': 'borderPulse 1.5s ease-out forwards',
+              'logo-entry': 'logoEntry 2.5s cubic-bezier(0.19, 1, 0.22, 1) forwards',
+            },
+            keyframes: {
+              'spin-reverse': {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(-360deg)' },
+              },
+              'glitch': {
+                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                '62%': { transform: 'translate(0,0) skew(5deg)' },
+              },
+              'scan': {
+                '0%': { backgroundPosition: '0 -100vh' },
+                '100%': { backgroundPosition: '0 100vh' }
+              },
+              'grid-move': {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(50px)' }
+              },
+              'typing': {
+                '0%': { opacity: '0.3' },
+                '50%': { opacity: '1' },
+                '100%': { opacity: '0.3' }
+              },
+              'slideUp': {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              'scaleIn': {
+                '0%': { transform: 'scale(0.9)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' }
+              },
+              'hologramFlicker': {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.9' },
+                '52%': { opacity: '0.4' },
+                '54%': { opacity: '0.9' },
+                '90%': { opacity: '1' },
+                '92%': { opacity: '0.7' }
+              },
+              'aiMaterialize': {
+                '0%': { opacity: '0', transform: 'translateY(15px) scale(0.97)', filter: 'blur(5px)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)', filter: 'blur(0)' }
+              },
+              'borderPulse': {
+                '0%': { borderColor: 'rgba(0, 240, 255, 0.8)', boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)' },
+                '100%': { borderColor: '#0f172a', boxShadow: 'none' }
+              },
+              'logoEntry': {
+                '0%': { opacity: '0', transform: 'scale(0.5) translateY(50px)', filter: 'blur(20px)' },
+                '20%': { opacity: '1', transform: 'scale(1.1) translateY(0)', filter: 'blur(0)' },
+                '100%': { opacity: '1', transform: 'scale(1)', filter: 'blur(0)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --van-accent: #00f0ff;
+        --van-alert: #ff003c;
+        --van-success: #00ff9d;
+        --van-warn: #fcee0a;
+        --van-purple: #d946ef;
+      }
+      
+      body {
+        background-color: #020408;
+        color: #e2e8f0;
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior-y: none;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+      }
+      
+      /* HUD Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050a10; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b; 
+        border: 1px solid var(--van-accent);
+        border-radius: 0px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--van-accent);
+        box-shadow: 0 0 10px var(--van-accent);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      /* Noise Texture */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 90;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* CRT / Hologram Effect */
+      .scanline-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.1) 50%,
+          rgba(0, 0, 0, 0.1)
+        );
+        background-size: 100% 3px;
+        pointer-events: none;
+        z-index: 95;
+        opacity: 0.3;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+      }
+      
+      /* Advanced Clip Paths for UI */
+      .clip-tech-button {
+        clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      }
+      .clip-message-user {
+        clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+      }
+      .clip-message-ai {
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+      }
+      
+      .tech-border {
+        position: relative;
+      }
+      .tech-border::before, .tech-border::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border: 1px solid var(--van-accent);
+        transition: all 0.3s ease;
+        opacity: 0.6;
+      }
+      .tech-border::before { top: 0px; left: 0px; border-right: none; border-bottom: none; }
+      .tech-border::after { bottom: 0px; right: 0px; border-left: none; border-top: none; }
+      
+      .animate-scan {
+        animation: scan 3s linear infinite;
+        background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.15), transparent);
+        background-size: 100% 50%;
+      }
+
+      /* 3D Floor Perspective */
+      .perspective-container {
+        perspective: 1000px;
+        overflow: hidden;
+      }
+      .floor-rings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateX(60deg);
+        width: 200vw;
+        height: 200vw;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 240, 255, 0.1);
+        background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+        animation: spin-tilt 60s linear infinite;
+        pointer-events: none;
+      }
+      .floor-rings::before {
+         content: '';
+         position: absolute;
+         top: 10%; left: 10%; right: 10%; bottom: 10%;
+         border-radius: 50%;
+         border: 1px dashed rgba(217, 70, 239, 0.1); /* Purple */
+      }
+      .floor-rings::after {
+         content: '';
+         position: absolute;
+         top: 25%; left: 25%; right: 25%; bottom: 25%;
+         border-radius: 50%;
+         border: 2px solid rgba(0, 240, 255, 0.05);
+      }
+
+      @keyframes spin-tilt {
+        0% { transform: translate(-50%, -10%) rotateX(70deg) rotate(0deg); }
+        100% { transform: translate(-50%, -10%) rotateX(70deg) rotate(360deg); }
+      }
+      
+      /* Safe Area Utilities */
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "remark-gfm": "https://esm.sh/remark-gfm@4.0.0?bundle",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+    "three/": "https://aistudiocdn.com/three@^0.181.2/"
+  }
+}
+</script>
+</head>
+  <body class="bg-van-950 text-slate-200 overflow-hidden font-sans antialiased selection:bg-van-accent selection:text-black">
+    <div class="noise-overlay"></div>
+    <div class="scanline-overlay"></div>
+    <div class="perspective-container absolute inset-0 z-0">
+        <div class="floor-rings"></div>
+    </div>
+    <div id="root" class="h-full w-full"></div>
+  </body>
+</html>
